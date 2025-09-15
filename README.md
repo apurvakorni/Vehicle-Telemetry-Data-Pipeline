@@ -24,7 +24,7 @@ Code: Python (producer & consumer)
 
 ## 🚀 Quick Start
 
-### 1. Start Services
+### 1. Start Services using Docker
 ```bash
 docker compose up -d
 ```
