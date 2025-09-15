@@ -2,13 +2,22 @@
 ## 📌 Overview
 
 This project builds a real-time data pipeline for electric vehicle (EV) telemetry.
+## 🛠️ Tech Stack
 
-Flow:
+Streaming: Apache Kafka
 
-Producer generates or replays EV telemetry (speed, battery %, temperature).
+Database: PostgreSQL
 
-Kafka streams telemetry events in real time.
+Infra: Docker Compose
 
-Spark Structured Streaming computes rolling KPIs in 1-minute windows.
+Code: Python (producer & consumer)
 
-PostgreSQL stores aggregated results for analysis.
+## Flow:
+
+1. Producer generates or replays EV telemetry (speed, battery %, temperature).
+
+2. Kafka streams telemetry events in real time.
+
+3. Consumer subscribes to Kafka and writes data to PostgreSQL.
+
+4. Postgres stores the data for analysis and dashboards.
