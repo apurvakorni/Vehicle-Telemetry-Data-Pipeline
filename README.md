@@ -21,3 +21,34 @@ Code: Python (producer & consumer)
 3. Consumer subscribes to Kafka and writes data to PostgreSQL.
 
 4. Postgres stores the data for analysis and dashboards.
+
+## 🚀 Quick Start
+
+### 1. Start Services
+```bash
+docker compose up -d
+```
+### 2. Create Kafka Topic
+docker compose exec kafka kafka-topics --create \
+  --topic telemetry --bootstrap-server kafka:9092 \
+  --partitions 3 --replication-factor 1
+
+### 3. Run Producer
+cd producer
+pip install kafka-python
+python producer.py --vehicles 50 --rate 5
+
+👉 To use a real dataset, modify producer.py to read from CSV/JSON and push rows instead of generating random values.
+
+### 4. Run Consumer
+cd consumer
+pip install kafka-python psycopg2-binary
+python consumer.py
+
+### 5. Query Data in Postgres
+psql "postgresql://evuser:evpass@localhost:5432/telemetrydb" \
+  -c "SELECT * FROM telemetry ORDER BY ts DESC LIMIT 5;"
+
+
+
+
