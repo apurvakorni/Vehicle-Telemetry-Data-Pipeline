@@ -12,7 +12,7 @@ Infra: Docker Compose
 
 Code: Python (producer & consumer)
 
-## Flow:
+## 📂 Flow:
 
 1. Producer generates or replays EV telemetry (speed, battery %, temperature).
 
